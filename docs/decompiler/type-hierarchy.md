@@ -65,17 +65,31 @@ classDiagram
     +getAddress() Address
     +getOffset() long
   }
-  note for Varnode "Just a variable location and size, not part of a syntax tree"
   class HighSymbol {
     +getSymbol() Symbol
   }
   class HighVariable{
-    +getInstances() Varnode[]
     +getSymbol() HighSymbol
+    +getRepresentative() Varnode
   }
   Varnode <-- HighVariable
   HighSymbol <-- HighVariable
   Symbol <-- HighSymbol
   Address <-- Varnode
+  class Function{
+    +getVariables() Variable[]
+  }
+  class Variable{
+    getMinAddress() Address
+  }
+  Address <-- Variable
+  Variable <-- Function
+
 
 ```
+
+`HighVariable`s represent a _view_ on the underlying variable. The real, modifiable `Variable` object can be accessed by:
+
+1. Retrieving the _representative_ varnode of the `HighVariable`.
+2. Then match the address (`.getAddress().equals(...)`) with the minimum addresses of the variables known by the current function (`currentFunction.getVariables(null)`). This should handle stack/register address spaces too. 
+
