@@ -1,4 +1,4 @@
-Typeinfo Archvies
+Typeinfo Archives
 =================
 
 Load archives:
