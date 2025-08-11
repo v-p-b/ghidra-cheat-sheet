@@ -24,7 +24,11 @@ classDiagram
   HighFunction <-- DecompileResults
 ```
 
-## C Language Nodes
+## C Language Representation
+
+### Nodes and Tokens
+
+**Not all `Clang*Token` classes are inherited from `ClangToken` (e.g. `ClangVariableToken`)!**
 
 ```mermaid
 classDiagram
@@ -35,15 +39,25 @@ classDiagram
     +Child() ClangNode
   }
   <<Interface>> ClangNode
+  note for ClangNode "Needs recursive traversal"
   class ClangToken {
     +getVarnode() Varnode
   }
+  class ClangStatement {
+    +getPcodeOp() PcodeOp
+  }
   class ClangTokenGroup
-  ClangNode <|-- ClangToken
-  ClangToken *-- ClangTokenGroup
+  note for ClangTokenGroup "Somewhat arbitrary grouping, doesn't necessarily follow syntax!"
+  ClangNode <|.. ClangToken
+  ClangNode <|.. ClangStatement
+  ClangToken --* ClangTokenGroup
+  PcodeOp <-- ClangStatement
+  ClangTokenGroup <|-- ClangStatement
 ```
 
-## Symbols, Variables, Varnodes
+## High-Level Representation
+
+### Symbols, Variables, Varnodes
 
 ```mermaid
 classDiagram
