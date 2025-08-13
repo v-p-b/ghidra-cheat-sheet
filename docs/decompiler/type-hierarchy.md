@@ -87,9 +87,3 @@ classDiagram
 
 
 ```
-
-`HighVariable`s represent a _view_ on the underlying variable. The real, modifiable `Variable` object can be accessed by:
-
-1. Retrieving the _representative_ varnode of the `HighVariable`.
-2. Then match the address (`.getAddress().equals(...)`) with the minimum addresses of the variables known by the current function (`currentFunction.getVariables(null)`). This should handle stack/register address spaces too. 
-
