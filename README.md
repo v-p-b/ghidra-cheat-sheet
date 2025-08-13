@@ -1,4 +1,4 @@
-# Ghidra Cheat Sheet
+# Ghidra Dev Cheat Sheet
 
 ## Requirements
 
