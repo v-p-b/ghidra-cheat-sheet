@@ -15,5 +15,10 @@ Load archives:
 ## Typeinfo Databases
 
 * [ghidra-data by 0x6d696368](https://github.com/0x6d696368/ghidra-data/tree/master/typeinfo)
+* [Ghidra IDATIL GDT](https://github.com/NyaMisty/ghidra_ida_til) - Typeinfo from scraped IDA TIL's
+* [NDIS](https://github.com/clearseclabs/ghidra-data-types/)
 
+## Generation
+
+* [Windows SDK GDT Generator](https://github.com/T-RN-R/winsdk-gdt)
 
